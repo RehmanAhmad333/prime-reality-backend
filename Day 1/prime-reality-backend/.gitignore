@@ -1,0 +1,19 @@
+# Virtual Environment
+venv/
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Alembic cache
+*.sqlite3
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Environment
+.env.*
