@@ -1,3 +1,5 @@
+# This module defines the SearchHistory model for the Prime Reality backend application. The SearchHistory model is used to store information about users' search queries and the filters they applied when searching for properties on the platform. It includes fields for the user ID (foreign key to the users table), the search query text, a JSON string of the filters used, the count of results returned for that search, and a timestamp for when the search was performed. This allows for tracking user search behavior and can be useful for analytics and improving search functionality in the future.
+
 from sqlalchemy import Column, Integer, String, TIMESTAMP, ForeignKey, func
 from app.core.database import Base
 

@@ -1,3 +1,5 @@
+# This module defines the Property model for the Prime Reality backend application. The Property model is used to store information about properties listed on the platform, including details such as the seller ID, title, description, property type, price, number of bedrooms and bathrooms, area in square feet, location (using geographic coordinates), address, city, state, zip code, status of the listing (pending, approved, rejected), whether the property is featured, and the number of views. It also includes additional fields for tags, labels, categories, and timestamps for when the property was created and last updated. This model serves as the core representation of a property listing in the application and is essential for managing and displaying properties to users.
+
 from sqlalchemy import Column, Integer, String, Numeric, Boolean, TIMESTAMP, ForeignKey, func, BigInteger
 from geoalchemy2 import Geography
 from app.core.database import Base

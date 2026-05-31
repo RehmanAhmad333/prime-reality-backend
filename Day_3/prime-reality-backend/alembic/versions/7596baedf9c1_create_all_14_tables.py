@@ -96,7 +96,7 @@ def upgrade() -> None:
     sa.ForeignKeyConstraint(['seller_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index('idx_properties_location', 'properties', ['location'], unique=False, postgresql_using='gist')
+    op.create_index('idx_properties_location', 'properties', ['location'], unique=False, postgresql_using='gist', if_not_exists=True)
     op.create_index(op.f('ix_properties_id'), 'properties', ['id'], unique=False)
     op.create_table('search_history',
     sa.Column('id', sa.Integer(), nullable=False),

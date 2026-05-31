@@ -1,3 +1,5 @@
+# This module defines the User model for the Prime Reality backend application. The User model is used to store information about users of the platform, including their email, password hash, full name, phone number, role (buyer, seller, admin), whether their account is active, and a timestamp for when the account was created. This model serves as the core representation of a user in the application and is essential for managing user authentication, authorization, and profile information.
+
 from sqlalchemy import Column, Integer, String, Boolean, TIMESTAMP, func
 from app.core.database import Base
 

@@ -1,3 +1,5 @@
+# This module defines the Inquiry model for the Prime Reality backend application. The Inquiry model is used to store inquiries made by buyers about specific properties. It includes fields for the property ID, buyer ID, message content, status of the inquiry (pending, replied, closed), and a timestamp for when the inquiry was created. This allows buyers to communicate their interest in properties and sellers/agents to manage those inquiries effectively.
+
 from sqlalchemy import Column, Integer, Text, String, ForeignKey, TIMESTAMP, func
 from app.core.database import Base
 

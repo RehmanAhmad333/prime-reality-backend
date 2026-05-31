@@ -1,3 +1,5 @@
+# This module defines the PlatformStat model for the Prime Reality backend application. The PlatformStat model is used to store various statistics about the platform, such as the total number of properties listed, total inquiries made, and total users registered. It includes fields for a unique stat key, the corresponding stat value, and a timestamp for when the statistic was last updated. This allows for tracking and analyzing key metrics about the platform's performance and user engagement over time.
+
 from sqlalchemy import Column, Integer, String, BigInteger, TIMESTAMP, func
 from app.core.database import Base
 

@@ -1,12 +1,12 @@
-# prime-reality-backend/core/database.py
+# This module sets up the database connection and session management for the Prime Reality backend application. It uses SQLAlchemy for ORM and connection pooling, and includes error handling and logging for robust database interactions. The `get_db` function provides a generator for database sessions, ensuring proper cleanup after use.
 
 import os
-import logging
+import logging # Importing the logging module to enable logging throughout the database module
 
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker, declarative_base
-from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import create_engine, text  # Importing necessary SQLAlchemy components for creating the database engine and executing raw SQL
+from sqlalchemy.orm import sessionmaker, declarative_base # Importing sessionmaker for creating database sessions and declarative_base for defining the base class for SQLAlchemy models
+from sqlalchemy.exc import SQLAlchemyError # Importing SQLAlchemyError for handling database-related exceptions
 
 load_dotenv()
 
@@ -58,7 +58,7 @@ def test_database_connection():
         raise
 
 
-def get_db():
+def get_db():  # This function is a generator that provides a database session for use in API endpoints. It ensures that the session is properly closed after use, and includes error handling for database-related issues.
     db = SessionLocal()
 
     try:
