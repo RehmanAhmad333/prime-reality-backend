@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from sqlalchemy import text
 from app.core.database import engine
-from app.api.v1.endpoints import auth  , users
+from app.api.v1.endpoints import auth  , users , properties
 
 # Lifespan setup for startup and shutdown events. Isme hum database connection test karenge startup pe, aur shutdown pe database engine ko dispose karenge. Lifespan function ek async generator hai jo app ke lifecycle events ko manage karta hai. Startup me hum database connection test karte hain, aur agar connection successful hota hai to app start hota hai. Agar connection fail hota hai to exception raise hota hai aur app start nahi hota. Shutdown me hum database engine ko dispose karte hain taki resources release ho jayein.
 @asynccontextmanager
@@ -48,3 +48,5 @@ def read_root():
 app.include_router(auth.router, prefix="/api/v1")
 # 6. Future Routers (e.g., users, properties, chat) can be included here similarly
 app.include_router(users.router, prefix="/api/v1") 
+
+app.include_router(properties.router, prefix="/api/v1") 
