@@ -6,6 +6,12 @@ from sqlalchemy import text
 from app.core.database import engine
 from app.api.v1.endpoints import auth  , users , properties
 
+# Load environment variables
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+
 # Lifespan setup for startup and shutdown events. Isme hum database connection test karenge startup pe, aur shutdown pe database engine ko dispose karenge. Lifespan function ek async generator hai jo app ke lifecycle events ko manage karta hai. Startup me hum database connection test karte hain, aur agar connection successful hota hai to app start hota hai. Agar connection fail hota hai to exception raise hota hai aur app start nahi hota. Shutdown me hum database engine ko dispose karte hain taki resources release ho jayein.
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -30,10 +36,15 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+# Load allowed origins from .env (comma-separated string)
+# Default backup urls provided if env variable is missing
+frontend_urls_str = os.getenv("FRONTEND_URLS", "http://localhost:5173,http://localhost:3000")
+allowed_origins = [url.strip() for url in frontend_urls_str.split(",")]
+
 # CORS Middleware Configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],  # Frontend URLs
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
