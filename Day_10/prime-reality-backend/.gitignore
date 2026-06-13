@@ -1,0 +1,28 @@
+# Virtual Environment
+venv/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Alembic & SQLite Cache
+*.sqlite3
+
+# VS Code Settings
+.vscode/
+
+# Logs
+*.log
+
+# --- ENVIRONMENT VARIABLES HANDLING ---
+# Block the main production env file
+.env
+
+# Block any backup environment files (e.g., .env.local, .env.prod)
+.env.local
+.env.production
+.env.development
+
+# STRICTLY EXCLUDE .env.example FROM BEING IGNORED
+# (Yeh line Git ko bolegi ke .env.example ko ignore NAHI karna)
+!.env.example
